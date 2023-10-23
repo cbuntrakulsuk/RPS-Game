@@ -5,13 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors: {
-      'darkText': 'hsl(229, 25%, 31%)',
-      'scoreText': 'hsl(229, 64%, 46%)',
-      'headerOutline': 'hsl(217, 16%, 45%)',
-      'white':'#ffffff',
+    extend: {
+      colors: {
+        'darkText': 'hsl(229, 25%, 31%)',
+        'scoreText': 'hsl(229, 64%, 46%)',
+        'headerOutline': 'hsl(217, 16%, 45%)',
+        'white':'#ffffff',
+        'black' : "black",
+      },
     },
-    extend: {},
   },
   plugins: [],
 }
