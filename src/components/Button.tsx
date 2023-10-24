@@ -1,14 +1,16 @@
-
 interface Props {
-    children: string;
-    styles: string;
-    onClick: () => void;
+  children: string;
+  styles: string;
+  onClick: () => void;
 }
 
-const Button = ({ children, styles, onClick}: Props) => {
+const Button = ({ children, styles, onClick }: Props) => {
   return (
-    <button className={styles} onClick={onClick}> {children} </button>
-  )
-}
+    <button className={styles} onClick={onClick}>
+      {" "}
+      {children}{" "}
+    </button>
+  );
+};
 
-export default Button 
+export default Button;
