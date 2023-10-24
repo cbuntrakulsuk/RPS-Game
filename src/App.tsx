@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "./components/Button";
 import ScoreBoard from "./components/ScoreBoard";
 import Modal from "./components/Modal";
-import GameBoard from "./components/Gameboard";
+import GameBoard from "./components/GameBoard";
 
 function App() {
   const [modalVisible, setModalVisibility] = useState(false);
