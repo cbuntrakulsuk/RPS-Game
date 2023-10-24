@@ -8,9 +8,11 @@ function App() {
   const [modalVisible, setModalVisibility] = useState(false);
 
   return (
-    <div>
+    <div className="flex justify-center">
       <ScoreBoard />
-      {modalVisible && <Modal> Rules </Modal>}
+      {modalVisible && (
+        <Modal onClose={() => setModalVisibility(false)}> Rules </Modal>
+      )}
       <Button
         styles="border-headerOutline border-2 rounded-lg px-8 py-1 absolute bottom-20 right-20"
         onClick={() => setModalVisibility(true)}

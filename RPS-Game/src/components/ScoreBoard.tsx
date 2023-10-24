@@ -1,20 +1,17 @@
+import Logo from "../assets/images/logo.svg";
 
-function ScoreBoard () {
-    return (
-        <>
-        <div className="flex flex-wrap mx-48 mt-20 border border-4 border-headerOutline p-8 rounded-2xl">
-            <ul className="text-white text-5xl basis-3/4">
-                <li className="-mb-2">Rock</li>
-                <li className="-mt-2">Paper</li>
-                <li className="-mt-2">Scissors</li>
-            </ul>
-            <div className="bg-white rounded-2xl text-center grow">
-                <h2 className="text-xl text-scoreText mt-3">Score</h2>
-                <div className="text-7xl text-darkText">12</div>
-            </div>
-         </div>
-        </>
-    )
+function ScoreBoard() {
+  return (
+    <>
+      <div className="flex items-center justify-between mt-[50px] border border-4 border-headerOutline rounded-2xl  w-[700px] h-[150px]">
+        <img className="px-[32px] py-[25px]" src={Logo} />
+        <div className="bg-white rounded-2xl text-center w-[150px] h-[115px] mr-[25px] py-[10px]">
+          <h2 className="text-xl text-scoreText">Score</h2>
+          <div className="text-6xl text-darkText">12</div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default ScoreBoard;
