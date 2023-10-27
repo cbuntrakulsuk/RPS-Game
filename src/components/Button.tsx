@@ -7,8 +7,7 @@ interface Props {
 const Button = ({ children, styles, onClick }: Props) => {
   return (
     <button className={styles} onClick={onClick}>
-      {" "}
-      {children}{" "}
+      {children}
     </button>
   );
 };
