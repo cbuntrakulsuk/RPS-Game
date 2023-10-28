@@ -7,24 +7,52 @@ import GameBoard from "./components/GameBoard";
 import ResultBoard from "./components/ResultBoard";
 
 function App() {
+  const CPU_CHOICES: string[] = ["Rock", "Paper", "Scissors"];
   const [modalVisible, setModalVisibility] = useState(false);
-  const [choice, setChoice] = useState({
+  const [playerChoice, setPlayerChoice] = useState({
     image: "null",
     color: "null",
     option: "null",
   });
 
+  const cpuChoice = () => {
+    // 1. random a computer selection
+    const cpuChoice = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
+    return CPU_CHOICES[cpuChoice];
+  };
+
+  const checkWinner = (cpuChoice: string, playerChoice: string) => {
+    if (cpuChoice === playerChoice) {
+      return "Tie!";
+    } else if (
+      (playerChoice === "Rock" && cpuChoice === "Scissors") ||
+      (playerChoice === "Scissors" && cpuChoice === "Paper") ||
+      (playerChoice === "Paper" && cpuChoice === "Rock")
+    ) {
+      return "You Win!";
+    } else {
+      return "You Lose";
+    }
+  };
+
   const handleClick = (Paper: string, color: string, selection: string) => {
-    setChoice((prevChoice: any) => ({
+    setPlayerChoice((prevChoice: any) => ({
       ...prevChoice,
       image: Paper,
       color: color,
       option: selection,
     }));
-    console.log("Run other stuff");
-    // 1. random a computer selection
+
+    //1. Cpu picks a selection
+    const cpuPick = cpuChoice();
+
     // 2. compare result to computer selection
+    console.log("Player picked: " + selection);
+    console.log("CPU picked: " + cpuPick);
+    console.log(checkWinner(cpuPick, selection));
+
     // 3. update ScoreBoard
+
     // 4. play again
   };
 
@@ -42,14 +70,10 @@ function App() {
           RULES
         </Button>
       </div>
-      {choice.image === "null" ? (
+      {playerChoice.image === "null" ? (
         <GameBoard handleClick={handleClick} />
       ) : (
-        <ResultBoard
-          option={choice.option}
-          color={choice.color}
-          image={choice.image}
-        />
+        <ResultBoard color={playerChoice.color} image={playerChoice.image} />
       )}
     </div>
   );

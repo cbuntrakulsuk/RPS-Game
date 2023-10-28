@@ -3,10 +3,9 @@ import SelectButton from "./SelectButton";
 interface Props {
   image: string;
   color: string;
-  option: string;
 }
 
-const ResultBoard = ({ image, color, option }: Props) => {
+const ResultBoard = ({ image, color }: Props) => {
   return (
     <div className="flex items-center justify-center mt-[60px]">
       <div className="relative w-[700px] h-[450px]">

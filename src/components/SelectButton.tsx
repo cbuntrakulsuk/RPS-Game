@@ -1,6 +1,6 @@
 interface Props {
-  children?: JSX.Element | JSX.Element[];
-  color?: string;
+  children: JSX.Element | JSX.Element[];
+  color: string;
   styles: string;
   onClick?: () => void;
 }
