@@ -1,17 +1,17 @@
 interface Props {
-  children: JSX.Element | JSX.Element[];
-  color: string;
-  styles: string;
+  choice: any;
   onClick?: () => void;
 }
 
-const SelectButton = ({ color, children, styles, onClick }: Props) => {
+const SelectButton = ({ onClick, choice }: Props) => {
   return (
     <div
-      className={`cursor-pointer absolute w-[200px] h-[200px] bg-white border-[24px] drop-shadow-2xl rounded-full ${color} ${styles}`}
+      className={`cursor-pointer w-[200px] h-[200px] bg-white border-[24px] drop-shadow-2xl rounded-full ${choice.color}`}
       onClick={onClick}
     >
-      {children}
+      <div className="h-[150px] flex items-center justify-center">
+        <img className="scale-125" src={choice.img} />
+      </div>
     </div>
   );
 };

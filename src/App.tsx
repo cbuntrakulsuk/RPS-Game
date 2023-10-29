@@ -5,23 +5,28 @@ import ScoreBoard from "./components/ScoreBoard";
 import Modal from "./components/Modal";
 import GameBoard from "./components/GameBoard";
 import ResultBoard from "./components/ResultBoard";
+import { PLAYER_CHOICE, CPU_CHOICE, RPS } from "./data";
 
 function App() {
-  const CPU_CHOICES: string[] = ["Rock", "Paper", "Scissors"];
   const [modalVisible, setModalVisibility] = useState(false);
-  const [playerChoice, setPlayerChoice] = useState({
-    image: "null",
-    color: "null",
-    option: "null",
-  });
+  const [isClicked, setisClicked] = useState(false);
 
-  const cpuChoice = () => {
-    // 1. random a computer selection
+  const getCpuChoice = () => {
     const cpuChoice = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
-    return CPU_CHOICES[cpuChoice];
+    return RPS[cpuChoice];
   };
 
-  const checkWinner = (cpuChoice: string, playerChoice: string) => {
+  const updateChoice = (
+    choice: any,
+    newChoice: { name: any; color: any; img: any }
+  ) => {
+    newChoice.name = choice.name;
+    newChoice.color = choice.color;
+    newChoice.img = choice.img;
+    return newChoice;
+  };
+
+  const getWinner = (cpuChoice: string, playerChoice: string) => {
     if (cpuChoice === playerChoice) {
       return "Tie!";
     } else if (
@@ -35,25 +40,26 @@ function App() {
     }
   };
 
-  const handleClick = (Paper: string, color: string, selection: string) => {
-    setPlayerChoice((prevChoice: any) => ({
-      ...prevChoice,
-      image: Paper,
-      color: color,
-      option: selection,
-    }));
+  const handleClick = (pick: any) => {
+    setisClicked(true);
 
-    //1. Cpu picks a selection
-    const cpuPick = cpuChoice();
+    //1. getCpuPick
+    const cpuPick = getCpuChoice(); // random a number between 1 - 3
+    const newcpuPick = updateChoice(cpuPick, CPU_CHOICE); //updates the cpu choice object
 
-    // 2. compare result to computer selection
-    console.log("Player picked: " + selection);
-    console.log("CPU picked: " + cpuPick);
-    console.log(checkWinner(cpuPick, selection));
+    // 2. getPlayerPick
+    const playerPick = updateChoice(pick, PLAYER_CHOICE); //update the player choice object
 
-    // 3. update ScoreBoard
+    // 3. compare result to computer selection
+    console.log("Player picked: " + playerPick.name);
+    console.log("CPU picked: " + newcpuPick.name);
+    console.log(getWinner(newcpuPick.name, playerPick.name));
 
-    // 4. play again
+    // 4. update ScoreBoard
+
+    // 5. play again
+
+    // I think handle click needs to return both picks?
   };
 
   return (
@@ -70,10 +76,10 @@ function App() {
           RULES
         </Button>
       </div>
-      {playerChoice.image === "null" ? (
+      {isClicked === false ? (
         <GameBoard handleClick={handleClick} />
       ) : (
-        <ResultBoard color={playerChoice.color} image={playerChoice.image} />
+        <ResultBoard player={PLAYER_CHOICE} cpu={CPU_CHOICE} />
       )}
     </div>
   );
