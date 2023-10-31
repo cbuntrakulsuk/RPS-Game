@@ -10,6 +10,7 @@ import { PLAYER_CHOICE, CPU_CHOICE, RPS } from "./data";
 function App() {
   const [modalVisible, setModalVisibility] = useState(false);
   const [isClicked, setisClicked] = useState(false);
+  const [score, setScore] = useState(0);
 
   const getCpuChoice = () => {
     const cpuChoice = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
@@ -34,10 +35,15 @@ function App() {
       (playerChoice === "Scissors" && cpuChoice === "Paper") ||
       (playerChoice === "Paper" && cpuChoice === "Rock")
     ) {
+      updateScore(); // updates Scoreboard on win
       return "You Win!";
     } else {
       return "You Lose";
     }
+  };
+
+  const updateScore = () => {
+    setScore(score + 1);
   };
 
   const handleClick = (pick: any) => {
@@ -54,12 +60,6 @@ function App() {
     console.log("Player picked: " + playerPick.name);
     console.log("CPU picked: " + newcpuPick.name);
     console.log(getWinner(newcpuPick.name, playerPick.name));
-
-    // 4. update ScoreBoard
-
-    // 5. play again
-
-    // I think handle click needs to return both picks?
   };
 
   return (
@@ -68,7 +68,7 @@ function App() {
         {modalVisible && (
           <Modal onClose={() => setModalVisibility(false)}> Rules </Modal>
         )}
-        <ScoreBoard />
+        <ScoreBoard score={score} />
         <Button
           styles="border-headerOutline border-2 rounded-lg px-8 py-1 absolute bottom-20 right-20"
           onClick={() => setModalVisibility(true)}
