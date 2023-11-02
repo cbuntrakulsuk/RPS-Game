@@ -11,6 +11,7 @@ function App() {
   const [modalVisible, setModalVisibility] = useState(false);
   const [isClicked, setisClicked] = useState(false);
   const [score, setScore] = useState(0);
+  const [winner, setWinner] = useState("");
 
   const getCpuChoice = () => {
     const cpuChoice = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
@@ -57,9 +58,8 @@ function App() {
     const playerPick = updateChoice(pick, PLAYER_CHOICE); //update the player choice object
 
     // 3. compare result to computer selection
-    console.log("Player picked: " + playerPick.name);
-    console.log("CPU picked: " + newcpuPick.name);
-    console.log(getWinner(newcpuPick.name, playerPick.name));
+    const winner = getWinner(newcpuPick.name, playerPick.name);
+    setWinner(winner);
   };
 
   return (
@@ -79,7 +79,12 @@ function App() {
       {isClicked === false ? (
         <GameBoard handleClick={handleClick} />
       ) : (
-        <ResultBoard player={PLAYER_CHOICE} cpu={CPU_CHOICE} />
+        <ResultBoard
+          result={winner}
+          restart={setisClicked}
+          player={PLAYER_CHOICE}
+          cpu={CPU_CHOICE}
+        />
       )}
     </div>
   );
