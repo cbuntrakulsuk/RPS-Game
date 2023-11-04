@@ -38,13 +38,12 @@ const ResultBoard = ({ player, cpu, restart, result }: Props) => {
 
         {renderComponent && (
           <div className="m-5 z-50">
-            <div className="text-4xl font-bold"> {result} </div>
-
+            <div className="text-4xl font-bold">{result}</div>
             <Button
               onClick={() => restart(false)}
               styles="border-headerOutline border-2 rounded-lg px-8 py-1 uppercase bg-white text-black mt-3 "
             >
-              Play Again
+              <div className="text-darkText hover:text-red-500">Play Again</div>
             </Button>
           </div>
         )}

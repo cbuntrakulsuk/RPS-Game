@@ -36,7 +36,7 @@ function App() {
       (playerChoice === "Scissors" && cpuChoice === "Paper") ||
       (playerChoice === "Paper" && cpuChoice === "Rock")
     ) {
-      updateScore("win"); // updates Scoreboard on win
+      updateScore("win");
       return "You Win";
     } else {
       updateScore("lose");
