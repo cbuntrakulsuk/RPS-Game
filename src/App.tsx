@@ -14,7 +14,7 @@ function App() {
   const [winner, setWinner] = useState("");
 
   const getCpuChoice = () => {
-    const cpuChoice = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
+    const cpuChoice = Math.floor(Math.random() * 3);
     return RPS[cpuChoice];
   };
 
@@ -30,21 +30,28 @@ function App() {
 
   const getWinner = (cpuChoice: string, playerChoice: string) => {
     if (cpuChoice === playerChoice) {
-      return "Tie!";
+      return "Tie";
     } else if (
       (playerChoice === "Rock" && cpuChoice === "Scissors") ||
       (playerChoice === "Scissors" && cpuChoice === "Paper") ||
       (playerChoice === "Paper" && cpuChoice === "Rock")
     ) {
-      updateScore(); // updates Scoreboard on win
+      updateScore("win"); // updates Scoreboard on win
       return "You Win";
     } else {
+      updateScore("lose");
       return "You Lose";
     }
   };
 
-  const updateScore = () => {
-    setScore(score + 1);
+  const updateScore = (outcome: string) => {
+    if (outcome == "win") {
+      setScore(score + 1);
+    } else {
+      if (score > 0) {
+        setScore(score - 1);
+      }
+    }
   };
 
   const handleClick = (pick: any) => {
