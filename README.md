@@ -45,8 +45,6 @@ Users should be able to:
 - [Tailwindcss](https://tailwindcss.com/)
 - [Vitejs](https://vitejs.dev/)
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
 ### What I learned
 
 In my third React.js project, I embarked on a journey with TypeScript for the first time, and it enriched my understanding of several crucial aspects of web development. I delved deeper into the intricacies of passing functions as props, efficiently managing state within components, and mastering the art of conditional rendering. For styling, I harnessed the power of Tailwind CSS, elevating the aesthetics of my project. As I reflect on this endeavor,
