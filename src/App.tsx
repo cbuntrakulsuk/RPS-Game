@@ -77,7 +77,7 @@ function App() {
         )}
         <ScoreBoard score={score} />
         <Button
-          styles="border-headerOutline border-2 rounded-lg px-8 py-1 absolute bottom-20 right-20"
+          styles="border-headerOutline border-2 rounded-lg px-8 py-1 absolute bottom-20 right-20 sm:right-50 sm:left-1/2 sm:transform -translate-x-1/2"
           onClick={() => setModalVisibility(true)}
         >
           RULES

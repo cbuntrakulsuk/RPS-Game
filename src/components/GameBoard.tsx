@@ -7,18 +7,18 @@ interface Props {
 
 const GameBoard = ({ handleClick }: Props) => {
   return (
-    <div className="flex items-center justify-center mt-[60px]">
+    <div className="flex items-center justify-center mt-[60px] sm:scale-75">
       <div className="relative w-[500px] h-[450px] bg-no-repeat bg-center bg-[url('.\assets\images\bg-triangle.svg')]">
         {/* Rock Button */}
-        <div className="absolute right-1/2 left-[29%] bottom-0">
+        <div className="absolute right-1/2 left-[29%] bottom-0 sm:left-[25%]">
           <SelectButton choice={RPS[0]} onClick={() => handleClick(RPS[0])} />
         </div>
         {/* Paper Button */}
-        <div className="absolute top-0 left-0">
+        <div className="absolute top-0 left-0 sm:left-[-5%]">
           <SelectButton choice={RPS[1]} onClick={() => handleClick(RPS[1])} />
         </div>
         {/* Scissors Button */}
-        <div className="absolute right-0 top-0">
+        <div className="absolute right-0 top-0 sm:right-[-5%]">
           <SelectButton choice={RPS[2]} onClick={() => handleClick(RPS[2])} />
         </div>
       </div>
