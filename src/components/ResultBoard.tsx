@@ -37,7 +37,7 @@ const ResultBoard = ({ player, cpu, restart, result }: Props) => {
         </div>
 
         {renderComponent && (
-          <div className="m-5 z-50">
+          <div className="m-5 z-40">
             <div className="text-4xl font-bold">{result}</div>
             <Button
               onClick={() => restart(false)}
